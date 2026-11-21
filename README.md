@@ -1,153 +1,127 @@
-# Sistema de Gestión de Torneos de Videojuegos 🎮
+# Sistema de Gestión de Torneos de Videojuegos
 
-Proyecto académico de **Programación Orientada a Objetos en Java** que permite simular la organización y el desarrollo de torneos de videojuegos, desde la inscripción de participantes hasta el registro de partidas y la consulta de resultados.
+Proyecto académico de **Programación Orientada a Objetos (Java)** basado en un diagrama UML. Permite simular desde consola torneos de videojuegos, registrar jugadores, programar partidas y obtener resultados.
 
-> **Estado:** prototipo funcional por consola, desarrollado a partir de un diagrama de clases UML. Avances correspondientes a los Sprints 1 y 2.
+## Datos generales
 
-## Información del proyecto
+| Dato | Información |
+| --- | --- |
+| Universidad | Universidad Nacional de San Agustín de Arequipa (UNSA) |
+| Curso | Desarrollo de Software Orientado a Objetos |
+| Integrante | Tony Sergio Palomino Frisancho |
+| Participación | Líder y único integrante |
+| Lenguaje | Java 17 o superior |
+| Interfaz actual | Consola |
 
-- **Universidad:** Universidad Nacional de San Agustín de Arequipa (UNSA)
-- **Curso:** Desarrollo de Software Orientado a Objetos
-- **Estudiante:** Tony Sergio Palomino Frisancho
-- **Rol:** líder del proyecto y único integrante
-- **Lenguaje:** Java 17
-- **Tipo de aplicación:** consola (sin interfaz gráfica)
-
-## Objetivo
-
-Aplicar los principios de la programación orientada a objetos para representar las principales entidades de un torneo de videojuegos y sus relaciones. El proyecto utiliza clases, encapsulamiento, herencia, abstracción, enumeraciones y asociaciones entre objetos.
-
-## Funcionalidades implementadas
+## Funciones disponibles
 
 - Crear torneos asociados a un videojuego.
-- Registrar y confirmar inscripciones de jugadores.
-- Validar inscripciones repetidas.
-- Generar rondas y enfrentamientos de **eliminación directa**.
-- Iniciar y finalizar partidas, y registrar sus marcadores.
-- Impedir empates en partidas de eliminación directa.
-- Avanzar ganadores a la siguiente ronda y obtener al campeón.
-- Actualizar y consultar una clasificación con estadísticas de los encuentros.
-- Ejecutar demostraciones y pruebas por consola sin dependencias de terceros.
-
-## Tecnologías
-
-| Tecnología | Uso |
-| --- | --- |
-| Java 17 | Implementación del sistema |
-| Programación orientada a objetos | Diseño de clases y relaciones |
-| UML | Modelo de referencia |
-| Maven | Organización y configuración del proyecto (`pom.xml`) |
+- Inscribir y confirmar participantes; detectar inscripciones duplicadas.
+- Organizar partidas de **eliminación directa**.
+- Registrar marcadores, clasificar ganadores y determinar al campeón.
+- Consultar la clasificación.
+- Ejecutar pruebas adicionales con cuatro jugadores, semifinales y final.
 
 ## Estructura del proyecto
 
 ```text
-SistemaTorneos/
-├── pom.xml
-├── README.md
-└── src/
-    └── main/
-        └── java/
-            └── com/
-                └── torneos/
-                    ├── Main.java
-                    ├── PruebasSprint2.java
-                    ├── Administrador.java
-                    ├── Videojuego.java
-                    ├── Torneo.java
-                    ├── Participante.java
-                    ├── Jugador.java
-                    ├── Equipo.java
-                    ├── Inscripcion.java
-                    ├── Ronda.java
-                    ├── Partido.java
-                    ├── Resultado.java
-                    ├── Clasificacion.java
-                    ├── EntradaClasificacion.java
-                    └── ... (enumeraciones y validaciones)
+SistemaTorneos_Organizado/
+├── Main.java                      # Ejemplo de ejecución
+├── modelo/                        # Clases del UML y validaciones
+│   ├── Torneo.java
+│   ├── Jugador.java
+│   ├── Equipo.java
+│   ├── Inscripcion.java
+│   ├── Ronda.java
+│   ├── Partido.java
+│   └── ...
+├── enums/                         # Enumeraciones (estados, tipos, formatos)
+│   ├── Modalidad.java
+│   ├── FormatoTorneo.java
+│   └── ...
+├── servicio/                      # Operaciones que usan las clases del modelo
+│   ├── GestionTorneos.java
+│   └── GestionInscripciones.java
+├── pruebas/                       # Comprobaciones por consola
+│   └── PruebasSprint2.java
+├── evidencias/                     # Imágenes del informe
+│   ├── diagrama_uml.png
+│   ├── pruebas_sprint2.png
+│   └── estructura_proyecto.png
+└── README.md
 ```
+
+Las carpetas `modelo`, `enums`, `servicio` y `pruebas` son **paquetes Java**. No se utiliza Maven; por eso **no hay `pom.xml`**. La clase `Main` está en la carpeta principal.
 
 ## Requisitos
 
-- **JDK 17** o superior, instalado y disponible en la terminal.
-- Un editor o IDE como **NetBeans, IntelliJ IDEA o Visual Studio Code** (opcional).
-- Maven es **opcional**: también se puede compilar directamente con `javac`.
+- **JDK 17 o superior** (no basta con instalar solo JRE).
+- Una terminal (PowerShell, Símbolo del sistema, Linux/macOS), o un editor compatible con Java.
 
-Para comprobar que Java está instalado:
+Puedes comprobar la instalación con `java -version` y `javac -version`.
+
+## Cómo compilar y ejecutar
+
+Abre una terminal **dentro de `SistemaTorneos_Organizado`** y escribe:
 
 ```bash
-java -version
-javac -version
+javac -encoding UTF-8 -d . Main.java modelo/*.java enums/*.java servicio/*.java pruebas/*.java
+java Main
 ```
 
-## Cómo ejecutar el proyecto
+Para ejecutar las pruebas del Sprint 2:
 
-1. Descarga o clona el repositorio y abre una terminal en la carpeta donde está `pom.xml`.
-2. Compila las clases:
-
-   ```bash
-   mkdir out
-   javac -encoding UTF-8 -d out src/main/java/com/torneos/*.java
-   ```
-
-3. Ejecuta la demostración principal:
-
-   ```bash
-   java -cp out com.torneos.Main
-   ```
-
-4. Ejecuta las pruebas del segundo Sprint:
-
-   ```bash
-   java -cp out com.torneos.PruebasSprint2
-   ```
-
-> Si trabajas desde un IDE, abre la carpeta como proyecto Maven y ejecuta `Main.java` o `PruebasSprint2.java` por separado. Si `mkdir out` indica que la carpeta ya existe, puedes continuar con la compilación.
-
-### ¿Qué hace la demostración?
-
-`Main` crea la **Copa Universitaria** para el videojuego Valorant, registra dos jugadores, organiza una partida, guarda su marcador e imprime al campeón y la clasificación.
-
-`PruebasSprint2` crea un torneo con **cuatro jugadores**, comprueba semifinales y final, y verifica casos como una inscripción duplicada y un empate no permitido. Al completarse correctamente, muestra:
-
-```text
-TOTAL: 7 verificaciones correctas
+```bash
+java pruebas.PruebasSprint2
 ```
 
-## Diseño orientado a objetos
+> En **PowerShell** o CMD (Windows), puede usarse esta variante para compilar:
+>
+> ```powershell
+> javac -encoding UTF-8 -d . Main.java modelo\*.java enums\*.java servicio\*.java pruebas\*.java
+> ```
+> Los `.class` generados no se incluyen en GitHub porque se vuelven a crear al compilar.
 
-La clase abstracta `Participante` sirve como base para `Jugador` y `Equipo`. `Torneo` relaciona el videojuego, las inscripciones, las rondas y la clasificación. Cada `Ronda` agrupa uno o más `Partido`, y cada partida puede registrar un `Resultado`.
+### Qué debería verse
 
-Las enumeraciones describen los estados y opciones del sistema, por ejemplo `Modalidad`, `FormatoTorneo`, `EstadoTorneo`, `EstadoInscripcion` y `FaseRonda`. También se incorporó `EstadoPartido` como apoyo a la implementación.
+- En `java Main`: creación de la Copa Universitaria, ganador **Ana** y clasificación.
+- En `java pruebas.PruebasSprint2`: **7 verificaciones correctas**, con semifinales, final y controles de errores.
 
-## Avance por Sprints
+## Clases más importantes
 
-| Sprint | Trabajo principal |
+| Clase | Responsabilidad |
 | --- | --- |
-| **Sprint 1** | Estructura de clases basada en UML, relaciones, inscripciones, partidas y demostración inicial |
-| **Sprint 2** | Clase `PruebasSprint2`, escenario de cuatro participantes y siete verificaciones de comportamiento |
+| `Torneo` | Controla participantes, rondas y estado del torneo. |
+| `Participante` | Clase abstracta base de `Jugador` y `Equipo`. |
+| `Inscripcion` | Registra y confirma participantes. |
+| `Ronda` y `Partido` | Organizan los encuentros. |
+| `Resultado` | Representa el marcador. |
+| `Clasificacion` | Resume los resultados. |
+| `GestionTorneos` | Usa las operaciones del administrador para crear o cancelar torneos. |
+| `GestionInscripciones` | Agrupa operaciones de registro y confirmación. |
 
-## Limitaciones actuales
+## Avances del proyecto
 
-- **Solo está implementada la generación de rondas para eliminación directa.** La opción de doble eliminación aparece en el modelo, pero no cuenta con un calendario funcional.
-- No hay interfaz gráfica: la interacción se realiza mediante ejemplos escritos en Java y salida por consola.
-- No se utiliza base de datos: la información se conserva en memoria mientras el programa está en ejecución.
-- No existe un sistema de inicio de sesión seguro; las credenciales de demostración no deben usarse en un entorno real.
-- La clasificación por estadísticas no sustituye al campeón obtenido mediante las rondas del torneo.
+- **Sprint 1:** clases principales a partir del UML y torneo básico.
+- **Sprint 2:** torneo de cuatro jugadores, semifinales, final y siete comprobaciones.
+- **Organización posterior al Sprint 2:** clases separadas en paquetes; mismas funciones y nuevas clases de servicio para facilitar futuras mejoras.
 
-## Posibles mejoras
+## Aspectos pendientes
 
-- Añadir una interfaz gráfica para administrar torneos.
-- Guardar participantes y resultados en una base de datos.
-- Implementar completamente el formato de doble eliminación.
-- Incorporar autenticación y gestión segura de administradores.
-- Agregar más pruebas automatizadas.
+- Menú interactivo para operar sin modificar el código.
+- Guardar participantes, resultados y torneos de manera permanente.
+- Interfaz gráfica.
+- Calendario completo de doble eliminación (todavía no implementado).
+- Autenticación segura: el ejemplo de administrador no debe tomarse como sistema de acceso real.
+
+## Evidencias
+
+![Diagrama de clases UML](evidencias/diagrama_uml.png)
+
+![Pruebas del Sprint 2](evidencias/pruebas_sprint2.png)
+
+![Estructura de carpetas](evidencias/estructura_proyecto.png)
 
 ## Autor
 
-**Tony Sergio Palomino Frisancho**  
-Estudiante de primer año, segundo semestre  
-Universidad Nacional de San Agustín de Arequipa (UNSA)
-
----
-
-*Proyecto académico con fines de aprendizaje.*
+**Tony Sergio Palomino Frisancho** — primer año, segundo semestre.
