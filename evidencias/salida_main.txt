@@ -1,0 +1,8 @@
+Torneo creado: Copa Universitaria
+Videojuego: Valorant | Género: Shooter táctico | Desarrolladora: Riot Games
+Campeón: Ana
+CLASIFICACIÓN
+1. Ana | V: 1 | D: 0 | Puntos: 13
+2. Luis | V: 0 | D: 1 | Puntos: 9
+
+AnaPro | Partidas: 1 | Victorias: 1
