@@ -1,0 +1,15 @@
+[OK] Cuatro inscripciones confirmadas
+[OK] Se rechaza inscripción duplicada
+[OK] Semifinal con dos partidos
+[OK] Se rechaza un empate
+[OK] Final con los ganadores de semifinales
+[OK] Campeona correcta: Ana
+[OK] Clasificación incluye participantes
+
+TOTAL: 7 verificaciones correctas
+CLASIFICACIÓN
+1. Ana | V: 2 | D: 0 | Puntos: 26
+2. Pedro | V: 1 | D: 1 | Puntos: 20
+3. María | V: 0 | D: 1 | Puntos: 10
+4. Luis | V: 0 | D: 1 | Puntos: 9
+
